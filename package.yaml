@@ -1,14 +1,14 @@
-name:                markov-names
-version:             0.1.0.0
-github:              "owlbeardm/markov-names"
-license:             BSD3
-author:              "Mikita KUkavenka"
-maintainer:          "godinfrog@gmail.com"
-copyright:           "2021 Mikita KUkavenka"
+name: markov-names
+version: 0.1.0.0
+github: "owlbeardm/markov-names"
+license: BSD3
+author: "Mikita KUkavenka"
+maintainer: "godinfrog@gmail.com"
+copyright: "2021 Mikita KUkavenka"
 
 extra-source-files:
-- README.md
-- ChangeLog.md
+  - README.md
+  - ChangeLog.md
 
 # Metadata used when publishing your package
 # synopsis:            Short description of your package
@@ -17,36 +17,51 @@ extra-source-files:
 # To avoid duplicated efforts in documentation and dealing with the
 # complications of embedding Haddock markup inside cabal files, it is
 # common to point users to the README.md file.
-description:         Please see the README on GitHub at <https://github.com/owlbeardm/markov-names#markov-names>
+description: Please see the README on GitHub at <https://github.com/owlbeardm/markov-names#markov-names>
+
+default-extensions:
+  - OverloadedStrings
+  - NoImplicitPrelude
 
 dependencies:
   - base
   - classy-prelude
 
 library:
+  ghc-options:
+    - "-Wall"
+    - "-Werror"
+    - "-Wincomplete-record-updates"
+    - "-Wincomplete-uni-patterns"
+    - "-Wredundant-constraints"
+    - "-Wno-unused-top-binds"
+    - "-O2"
   source-dirs: src
 
 executables:
   markov-names-exe:
-    main:                Main.hs
-    source-dirs:         app
+    main: Main.hs
+    source-dirs: app
     ghc-options:
-    - -threaded
-    - -rtsopts
-    - -with-rtsopts=-N
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
     dependencies:
-    - markov-names
+      - markov-names
 
 tests:
   markov-names-test:
-    main:                Spec.hs
-    source-dirs:         test
-    ghc-options:
-    - -threaded
-    - -rtsopts
-    - -with-rtsopts=-N
     dependencies:
-    - markov-names
+      - hspec
+      - markov-names
+      - tasty
+      - tasty-hspec
+    ghc-options:
+      - "-threaded"
+      - "-rtsopts"
+      - "-with-rtsopts=-N"
+    main: Spec.hs
+    source-dirs: test
 
 benchmarks:
   markov-names-benchmarks:
