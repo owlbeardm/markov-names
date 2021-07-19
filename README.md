@@ -20,7 +20,7 @@ w_j=j\text{-th word}$
 
 parametrs:
 
-- <img src="https://latex.codecogs.com/gif.latex?s=\text { $k=0$ }  " />
+![equation](https://latex.codecogs.com/gif.latex?k%3D0)
 
 - $k=0$
 
