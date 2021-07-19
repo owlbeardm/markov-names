@@ -1,0 +1,62 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.31.2.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: ab22fc921f1cde4f3d32cb20daf40fc299efbde9806e01668aa5e893bb5ed6dc
+
+name:           markov-names
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/markov-names#readme>
+homepage:       https://github.com/githubuser/markov-names#readme
+bug-reports:    https://github.com/githubuser/markov-names/issues
+author:         Author name here
+maintainer:     example@example.com
+copyright:      2021 Author name here
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/markov-names
+
+library
+  exposed-modules:
+      Lib
+  other-modules:
+      Paths_markov_names
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+  default-language: Haskell2010
+
+executable markov-names-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_markov_names
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , markov-names
+  default-language: Haskell2010
+
+test-suite markov-names-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_markov_names
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , markov-names
+  default-language: Haskell2010
