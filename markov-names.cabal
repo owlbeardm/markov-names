@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: ab22fc921f1cde4f3d32cb20daf40fc299efbde9806e01668aa5e893bb5ed6dc
+-- hash: a7e24700454c7f9444890bedd438351de039f465950103e9393a23d590dc5598
 
 name:           markov-names
 version:        0.1.0.0
@@ -33,7 +33,8 @@ library
   hs-source-dirs:
       src
   build-depends:
-      base >=4.7 && <5
+      base
+    , classy-prelude
   default-language: Haskell2010
 
 executable markov-names-exe
@@ -44,7 +45,8 @@ executable markov-names-exe
       app
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      base >=4.7 && <5
+      base
+    , classy-prelude
     , markov-names
   default-language: Haskell2010
 
@@ -57,6 +59,22 @@ test-suite markov-names-test
       test
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      base >=4.7 && <5
+      base
+    , classy-prelude
+    , markov-names
+  default-language: Haskell2010
+
+benchmark markov-names-benchmarks
+  type: exitcode-stdio-1.0
+  main-is: Bench.hs
+  other-modules:
+      Paths_markov_names
+  hs-source-dirs:
+      bench
+  ghc-options: -O2 -rtsopts -threaded -with-rtsopts=-N
+  build-depends:
+      base
+    , classy-prelude
+    , criterion
     , markov-names
   default-language: Haskell2010
