@@ -20,6 +20,8 @@ w_j=j\text{-th word}$
 
 parametrs:
 
+- <img src="https://latex.codecogs.com/gif.latex?s=\text { $k=0$ }  " />
+
 - $k=0$
 
 - $\alpha_{w_{i-n+1} \cdots w_{i-1}}=\cfrac{\beta_{w_{i-n+1} \cdots w_{i-1}}}{\displaystyle\sum_{\{w_i:C(w_{i-n+1} \cdots w_i)\le k \}} P_{bo}(w_i \mid w_{i-n+2} \cdots w_{i-1})}$  
