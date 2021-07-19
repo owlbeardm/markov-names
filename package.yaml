@@ -28,6 +28,8 @@ dependencies:
   - classy-prelude
 
 library:
+  dependencies:
+    - text
   ghc-options:
     - "-Wall"
     - "-Werror"
