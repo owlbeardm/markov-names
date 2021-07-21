@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: f4ff3e375edcd6114b4b56a9a80e6ac65a9a968855642da06a9be504426124ed
+-- hash: 86500944f9edceb59f0df086e8537effd1f5091215467722b2b9f1b1ceb58d87
 
 name:           markov-names
 version:        0.1.0.0
@@ -37,6 +37,7 @@ library
   ghc-options: -Wall -Werror -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints -Wno-unused-top-binds -O2
   build-depends:
       base
+    , boxes
     , classy-prelude
     , text
   default-language: Haskell2010

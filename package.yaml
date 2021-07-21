@@ -30,6 +30,7 @@ dependencies:
 library:
   dependencies:
     - text
+    - boxes
   ghc-options:
     - "-Wall"
     - "-Werror"
