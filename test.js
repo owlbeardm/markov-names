@@ -98,4 +98,15 @@ const getPbo = (s, wrds) => {
   return pob;
 };
 
+let csum = 0;
+let cgtsum = 0;
+uniqS.forEach(s => {
+    csum+=getCount(s);
+    cgtsum+=getCountGT(s);
+})
+
+cgtsum+=getCountGT("?");
+
+console.log("csum",csum);
+console.log("cgtsum",cgtsum);
 console.log(getPbo("m", "ie"));
