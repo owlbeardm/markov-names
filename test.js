@@ -9,7 +9,7 @@ const uniqS = [];
   if (!uniqS.includes(s)) uniqS.push(s);
 });
 const textLength = text.length;
-const count = { "": 21 };
+const count = { "": 112 };
 const N_r = [];
 const beta = {};
 const alpha = {};
@@ -49,6 +49,9 @@ const getSNr = (len, r) => {
 };
 
 const getCountGT = (x) => {
+  if (!getNr(x.length, 0)) {
+    return getCount(x);
+  }
   return (
     ((getCount(x) + 1) * getNr(x.length, getCount(x) + 1)) /
     getNr(x.length, getCount(x))
@@ -56,7 +59,9 @@ const getCountGT = (x) => {
 };
 
 const getD = (x) => {
-  return getCountGT(x) / getCount(x);
+  const d = getCountGT(x) / getCount(x);
+  console.log(`  getD(${x})=${d}`);
+  return d;
 };
 
 const getBeta = (x) => {
@@ -68,7 +73,7 @@ const getBeta = (x) => {
         .reduce((prev, s, index) => {
           return (getD(x + s) * getCount(x + s)) / getCount(x);
         }, 0);
-  console.log(`getBeta(${x})=${beta[x]}`);
+  console.log(`  getBeta(${x})=${beta[x]}`);
   return beta[x];
 };
 
@@ -82,31 +87,38 @@ const getAlpha = (x) => {
           return getPbo(s, x.substring(1));
         }, 0);
   }
-  console.log(`getAlpha(${x})=${alpha[x]}`);
+  console.log(`  getAlpha(${x})=${alpha[x]}`);
   return alpha[x];
 };
 
 const getPbo = (s, wrds) => {
   let pob = 0;
-//   if (!wrds) pob = getCountGT(s) / text.length;
-//   else {
-    if (getCount(wrds + s) > k)
-      pob = (getD(wrds + s) * getCount(wrds + s)) / getCount(wrds);
-    else pob = getAlpha(wrds) * getPbo(s, wrds.substring(1));
-//   }
-  console.log(`getPbo(${s}, ${wrds})=${pob}`);
+  //   if (!wrds) pob = getCountGT(s) / text.length;
+  //   else {
+  if (getCount(wrds + s) > k){
+    pob = (getD(wrds + s) * getCount(wrds + s)) / getCount(wrds);
+  }
+  else pob = getAlpha(wrds) * getPbo(s, wrds.substring(1));
+  //   }
+  // console.log(`getPbo(${s}, ${wrds})=${pob}`);
   return pob;
 };
 
-let csum = 0;
-let cgtsum = 0;
-uniqS.forEach(s => {
-    csum+=getCount(s);
-    cgtsum+=getCountGT(s);
-})
+let getPbosum = 0;
+// let cgtsum = 0;
+uniqS.forEach((s1) => {
+  uniqS.forEach((s2) => {
+    console.log(`getPbo(${s1}, ${s2})`,getPbo(s1, s2));
+    getPbosum+=getPbo(s1, s2);
+  });
+});
 
-cgtsum+=getCountGT("?");
+// console.log(`  getCount(hod);`, getCount("hod"));
+// console.log(`getCountGT(hod);`, getCountGT("hod"));
 
-console.log("csum",csum);
-console.log("cgtsum",cgtsum);
-console.log(getPbo("m", "ie"));
+// cgtsum += getCountGT("?");
+
+// console.log("csum", csum);
+// console.log("cgtsum", cgtsum);
+
+console.log("getPbosum", getPbosum);
