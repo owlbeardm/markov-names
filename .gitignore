@@ -27,3 +27,4 @@ sql/dump/dumpfile.sql
 dumpfile.sql
 
 prod-export.sh
+/markov-names-j/target/
